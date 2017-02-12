@@ -20,7 +20,7 @@ namespace IntelOrca.PvZTools
 			InitializeComponent();
 
 			this.Icon = Resources.orca_icon;
-			MessageBox.Show("PvZ Tools will only work for the original version of Plants vs. Zombies. You will have to obtain this yourself. In the likely case that this program does not work for you, it is probably because you have the wrong version. I will not be updating this to work with any other version apart from the original. I am unable to stop the game from spawning level zombies at this time. If you want the source code or to ask any appropriate questions, please contact me using the link at the bottom.", "Message from the author");
+			MessageBox.Show("PvZ Tools will only work for the original version of Plants vs. Zombies. You will have to obtain this yourself. In the likely case that this program does not work for you, it is probably because you have the wrong version. I am unable to stop the game from spawning level zombies at this time. The source code for this can be found on GitHub (https://github.com/IntelOrca/PVZTools)", "Message from the author");
 
 			chkPool.Checked = true;
 
