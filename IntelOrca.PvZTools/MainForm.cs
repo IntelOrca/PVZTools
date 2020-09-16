@@ -135,7 +135,6 @@ namespace IntelOrca.PvZTools
 				lblStatus.Text = "Status: Running...";
 				mSpawner = new ZombieSpawner(mProcess);
 				mSpawner.Activate();
-				//Cheats.NoSunDecrease(mMemory);
 			}
 		}
 
