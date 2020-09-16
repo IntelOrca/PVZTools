@@ -1,4 +1,5 @@
-﻿using IntelOrca.PvZTools.Properties;
+#nullable enable
+using IntelOrca.PvZTools.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,7 +10,7 @@ namespace IntelOrca.PvZTools
 {
 	public partial class MainForm : Form
 	{
-		PvZProcess mProcess = new PvZProcess();
+		PvZProcess mProcess = null!;
 		ZombieSpawner mSpawner;
 		ZombieProbabilityForm mZPF = new ZombieProbabilityForm();
 
@@ -17,6 +18,16 @@ namespace IntelOrca.PvZTools
 
 		public MainForm()
 		{
+			try
+			{
+				mProcess = new PvZProcess();
+			}
+			catch (NullReferenceException e)
+            {
+				MessageBox.Show(e.Message + " If you have one, please report this as a bug at https://github.com/IntelOrca/PVZTools/issues.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				Environment.Exit(1);
+            }
+
 			InitializeComponent();
 
 			this.Icon = Resources.orca_icon;
