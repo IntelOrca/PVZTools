@@ -1,4 +1,4 @@
-#nullable enable
+﻿#nullable enable
 using IntelOrca.PvZTools.Properties;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace IntelOrca.PvZTools
 	public partial class MainForm : Form
 	{
 		PvZProcess mProcess = null!;
-		ZombieSpawner mSpawner;
+		ZombieSpawner? mSpawner;
 		ZombieProbabilityForm mZPF = new ZombieProbabilityForm();
 
 		Random mRand = new Random();
@@ -55,13 +55,18 @@ namespace IntelOrca.PvZTools
 			else
 				zombieType = GetZombieType();
 			
-			mSpawner.Spawn(zombieType, GetRandomRowFromSelection(zombieType));
+			mSpawner!.Spawn(zombieType, GetRandomRowFromSelection(zombieType));
 		}
 
 		private void btnSpawnZombie_Click(object sender, EventArgs e)
 		{
 			SpawnZombie();
 		}
+
+        private void chkActive_CheckedChanged(object sender, EventArgs e)
+        {
+			tmrSpawn.Enabled = chkActive.Checked;
+        }
 
 		private int GetZombieType()
 		{
@@ -90,9 +95,6 @@ namespace IntelOrca.PvZTools
 
 		private void tmrSpawn_Tick(object sender, EventArgs e)
 		{
-			if (!chkActive.Checked)
-				return;
-
 			SpawnZombie();
 		}
 
@@ -142,8 +144,10 @@ namespace IntelOrca.PvZTools
 
 			if (!mProcess.OpenProcess()) {
 				lblStatus.Text = "Status: Unable to connect...";
+				btnSpawnZombie.Enabled = chkActive.Enabled = chkActive.Checked = false;
 			} else {
 				lblStatus.Text = "Status: Running...";
+				btnSpawnZombie.Enabled = chkActive.Enabled = true;
 				mSpawner = new ZombieSpawner(mProcess);
 				mSpawner.Activate();
 			}
@@ -172,5 +176,5 @@ namespace IntelOrca.PvZTools
 		{
 			Process.Start("http://tedtycoon.co.uk");
 		}
-	}
+    }
 }
