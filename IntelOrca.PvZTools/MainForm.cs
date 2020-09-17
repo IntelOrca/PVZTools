@@ -174,7 +174,7 @@ namespace IntelOrca.PvZTools
 
 		private void lblAuthor_MouseDown(object sender, MouseEventArgs e)
 		{
-			Process.Start("http://tedtycoon.co.uk");
+			Process.Start("http://intelorca.co.uk");
 		}
 	}
 }
