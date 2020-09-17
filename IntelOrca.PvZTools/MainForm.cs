@@ -23,10 +23,10 @@ namespace IntelOrca.PvZTools
 				mProcess = new PvZProcess();
 			}
 			catch (NullReferenceException e)
-            {
+			{
 				MessageBox.Show(e.Message + " If you have one, please report this as a bug at https://github.com/IntelOrca/PVZTools/issues.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				Environment.Exit(1);
-            }
+			}
 
 			InitializeComponent();
 
@@ -63,10 +63,10 @@ namespace IntelOrca.PvZTools
 			SpawnZombie();
 		}
 
-        private void chkActive_CheckedChanged(object sender, EventArgs e)
-        {
+		private void chkActive_CheckedChanged(object sender, EventArgs e)
+		{
 			tmrSpawn.Enabled = chkActive.Checked;
-        }
+		}
 
 		private int GetZombieType()
 		{
@@ -176,5 +176,5 @@ namespace IntelOrca.PvZTools
 		{
 			Process.Start("http://tedtycoon.co.uk");
 		}
-    }
+	}
 }
